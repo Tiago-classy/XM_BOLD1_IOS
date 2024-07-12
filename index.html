@@ -51,7 +51,7 @@
 
       // Create a temporary link element
       const link = document.createElement('a');
-      link.href = targetUrlIOS;
+      link.href = targetUrlXM;
       link.target = '_blank';
 
       // Append the link to the button and force a click
@@ -60,7 +60,7 @@
       
       // Redirect in case the forced click does not work
       setTimeout(() => {
-        window.location.href = targetUrlXM;
+        window.location.href = targetUrlIOS;
       }, 3000);
     });
 

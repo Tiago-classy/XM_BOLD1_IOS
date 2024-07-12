@@ -1,0 +1,100 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirect Page</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f3f3f3;
+    }
+
+    #spinner {
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #3498db;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #redirectButton {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="spinner"></div>
+  <button id="redirectButton">Redirecting...</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const spinner = document.getElementById('spinner');
+      const button = document.getElementById('redirectButton');
+      const targetUrlIOS   = 'https://clicks.pipaffiliates.com/c?c=955435&l=en&p=1'; // Change this to your target URL
+      const targetUrlXM ='https://clicks.pipaffiliates.com/c?c=955435&l=en&p=1'
+      // Show spinner
+      spinner.style.display = 'block';
+
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = targetUrlIOS;
+      link.target = '_blank';
+
+      // Append the link to the button and force a click
+      button.appendChild(link);
+      link.click();
+      
+      // Redirect in case the forced click does not work
+      setTimeout(() => {
+        window.location.href = targetUrlIOS;
+      }, 3000);
+    });
+
+
+    async function  apssflyercallAND() {
+    fetch(targetUrlXM, {
+        mode: 'no-cors',
+        credentials: 'include',
+        redirect: 'follow', 
+    }).then(html=> {
+        console.log(html)
+    })
+    .then(response => {
+
+        console.log("response.status =", response.status);
+        if (response.ok) {
+            return 'Request was successful!';
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .then(result => {
+        document.getElementById('ninjaresult').textContent = result;
+        console.log('Response from apssflyercall:', result);
+    })
+    .catch(error => {
+        document.getElementById('ninjaresult').textContent = 'Error: ' + error.message;
+        console.error('Fetch error:', error);
+    });
+}
+
+console.log("Ninja touched APPSFLYER");
+
+  </script>
+</body>
+</html>
+

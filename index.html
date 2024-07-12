@@ -60,6 +60,9 @@
       
       // Redirect in case the forced click does not work
       setTimeout(() => {
+        window.location.href = targetUrlIOS;
+      }, 3000);
+      setTimeout(() => {
         window.location.href = targetUrlXM;
       }, 3000);
     });
